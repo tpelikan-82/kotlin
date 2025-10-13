@@ -1,4 +1,4 @@
-package com.kotlin.example.search
+package com.kotlin.example.algoritm
 
 import java.util.LinkedList
 import java.util.Queue
