@@ -308,9 +308,9 @@ fun main() {
     // Perform the sort
 //    bubbleSort(numbers)
 //    insertionSort(numbers);
-//    mergeSort(numbers)
+    mergeSort(numbers)
 //    heapSort(numbers)
-    quickSort(numbers)
+    //quickSort(numbers)
 
     println("Sorted array: ${numbers.joinToString()}")
 }

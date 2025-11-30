@@ -36,9 +36,9 @@ class Counter : Thread() {
     }
 
     fun incrementCounter() {
-        synchronized(lock) {
+//       synchronized(lock) {
             counter++
-        }
+//        }
     }
 
 }

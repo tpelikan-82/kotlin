@@ -1,5 +1,12 @@
 package com.kotlin.example.patterns.creation
 
+import com.kotlin.example.threads.coroutines.RunBlocking
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlin.time.Duration.Companion.seconds
+
 class Singleton {
 }
 
@@ -31,12 +38,35 @@ object DatabaseManager {
     }
 }
 
-fun main() {
-    // Access the singleton instance directly by its name
+fun main() = runBlocking  {
     DatabaseManager.connect()
     DatabaseManager.connect()
     DatabaseManager.disconnect()
+        DatabaseManager.connect()
+        DatabaseManager.connect()
+        DatabaseManager.disconnect()
+
+    coroutineScope {
+        repeat(50_000) {
+            this.launch {
+                DatabaseManager.connect()
+                delay(1000)
+            }
+        }
+    }
+
+    coroutineScope {
+        repeat(50_000) {
+            this.launch {
+                DatabaseManager.connect()
+                delay(1000)
+            }
+        }
+    }
+}
+    // Access the singleton instance directly by its name
+
 
     // You cannot manually create an instance of an object
     // val manager = DatabaseManager() // This is not allowed
-}
+//}

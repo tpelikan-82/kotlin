@@ -21,7 +21,7 @@ fun dijkstra(graph: Map<Int, List<Pair<Int, Int>>>, startNode: Int): Map<Int, In
     // 1. Initialize data structures
     // Stores the shortest distance found so far from the start node to all other nodes.
     // We use a Map to represent "infinity" for nodes not yet reached, and the key is the node ID.
-    val distances = mutableMapOf<Int, Int>()
+    val distances: MutableMap<Int, Int> = mutableMapOf<Int, Int>()
 
     // Priority Queue stores pairs of (distance, node) and prioritizes the smallest distance.
     // It is the core of Dijkstra's efficiency, ensuring we always explore the shortest path first.
@@ -44,7 +44,7 @@ fun dijkstra(graph: Map<Int, List<Pair<Int, Int>>>, startNode: Int): Map<Int, In
 
         // 4. Explore neighbors (Relaxation step)
         // Get the neighbors of the current node from the graph.
-        val neighbors = graph[currentNode] ?: continue
+        val neighbors: List<Pair<Int, Int>> = graph[currentNode] ?: continue
 
         for ((neighborNode, weight) in neighbors) {
             val newDistance = currentDistance + weight

@@ -39,6 +39,27 @@ fun depthFirstSearchRecursive(node: Node) {
     }
 }
 
+fun findNode(node: Node, value: Int): Node? {
+
+    print("${node.value} ")
+
+    if (node.value == value) {
+        return node
+    }
+
+    for (child in node.children) {
+        val result: Node? = findNode(child, value);
+        if (result != null) { return result; }
+    }
+
+    return null
+
+}
+
+
+fun printNode(node: Node) {
+    print("The value was found and it is ${node.value} ")
+}
 
 fun main() {
 
@@ -61,5 +82,13 @@ fun main() {
 
     println("Search to deep")
     depthFirstSearchRecursive(root)
+    println("")
+
+    println("Start search to deep")
+    val result = findNode(root, 5)
+
+
+    result?.let { printNode(it) }
+
 
 }

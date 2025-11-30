@@ -11,6 +11,11 @@ fun <K, V> inverseMap(inputMap: Map<K, V>): Map<V, List<K>> {
     // 2. Transform the values of the grouped map.
     // We map the List<Entry> to a List<K> (the original keys).
     // Result type: Map<V, List<K>>
+
+
+   val result =  groupedByValue.mapValues { (_, entries) ->
+       entries.map { it.key } }
+
     return groupedByValue.mapValues { (_, entries) ->
         entries.map { it.key }
     }
